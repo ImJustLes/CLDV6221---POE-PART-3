@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ST10079848LesediModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="CarNo" />
+    </Key>
+    <Property Name="CarNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Car_Make" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Body_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Kilometres_travelled" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Service_Kilometres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Available" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Car_Returns" Relationship="Self.FK__Car_Retur__CarNo__6FE99F9F" FromRole="Car" ToRole="Car_Returns" />
+    <NavigationProperty Name="Rentals" Relationship="Self.FK__Rental__CarNo__6477ECF3" FromRole="Car" ToRole="Rental" />
+  </EntityType>
+  <EntityType Name="Car_Returns">
+    <Key>
+      <PropertyRef Name="RentalID" />
+    </Key>
+    <Property Name="CarNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="Inspector_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Driver_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="End_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Elapsed_Date" Type="Int32" Nullable="false" />
+    <Property Name="Fine" Type="Int32" Nullable="false" />
+    <Property Name="RentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Car" Relationship="Self.FK__Car_Retur__CarNo__6FE99F9F" FromRole="Car_Returns" ToRole="Car" />
+  </EntityType>
+  <EntityType Name="Driver">
+    <Key>
+      <PropertyRef Name="DriverID" />
+    </Key>
+    <Property Name="DriverID" Type="Int32" Nullable="false" />
+    <Property Name="Driver_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Driver_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Driver1">
+    <Key>
+      <PropertyRef Name="DriverID" />
+    </Key>
+    <Property Name="DriverID" Type="Int32" Nullable="false" />
+    <Property Name="Driver_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Driver_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Inspector">
+    <Key>
+      <PropertyRef Name="Inspector_no" />
+    </Key>
+    <Property Name="Inspector_no" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rental">
+    <Key>
+      <PropertyRef Name="RentalID" />
+    </Key>
+    <Property Name="CarNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="IName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Driver_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RentFee" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="End_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Car" Relationship="Self.FK__Rental__CarNo__6477ECF3" FromRole="Rental" ToRole="Car" />
+  </EntityType>
+  <Association Name="FK__Car_Retur__CarNo__6FE99F9F">
+    <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+    <End Role="Car_Returns" Type="Self.Car_Returns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="CarNo" />
+      </Principal>
+      <Dependent Role="Car_Returns">
+        <PropertyRef Name="CarNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rental__CarNo__6477ECF3">
+    <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+    <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="CarNo" />
+      </Principal>
+      <Dependent Role="Rental">
+        <PropertyRef Name="CarNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ST10079848LesediEntities2000" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cars" EntityType="Self.Car" />
+    <EntitySet Name="Car_Returns" EntityType="Self.Car_Returns" />
+    <EntitySet Name="Drivers" EntityType="Self.Driver" />
+    <EntitySet Name="Drivers1" EntityType="Self.Driver1" />
+    <EntitySet Name="Inspectors" EntityType="Self.Inspector" />
+    <EntitySet Name="Rentals" EntityType="Self.Rental" />
+    <AssociationSet Name="FK__Car_Retur__CarNo__6FE99F9F" Association="Self.FK__Car_Retur__CarNo__6FE99F9F">
+      <End Role="Car" EntitySet="Cars" />
+      <End Role="Car_Returns" EntitySet="Car_Returns" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rental__CarNo__6477ECF3" Association="Self.FK__Rental__CarNo__6477ECF3">
+      <End Role="Car" EntitySet="Cars" />
+      <End Role="Rental" EntitySet="Rentals" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

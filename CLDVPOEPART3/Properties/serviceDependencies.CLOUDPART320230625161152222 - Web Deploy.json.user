@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "mssql2": {
+      "restored": true,
+      "restoreTime": "2023-06-27T11:38:42.4611721Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2023-06-27T11:31:55.143419Z"
+    }
+  },
+  "parameters": {
+    "mssql2.resourceGroupName": {
+      "Name": "mssql2.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "AZ-JHB-RSG-VCGPSD-ST10079848-TER"
+    },
+    "mssql2.subscriptionId": {
+      "Name": "mssql2.subscriptionId",
+      "Type": "subscription",
+      "Value": "d1788afb-2254-4f5f-8826-94750f6da544"
+    }
+  }
+}

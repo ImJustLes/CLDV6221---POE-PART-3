@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ST10079848LesediModelStoreContainer" CdmEntityContainer="ST10079848LesediEntities200">
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="ST10079848LesediModel.Car">
+        <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+          <ScalarProperty Name="Car_Make" ColumnName="Car_Make" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Body_Type" ColumnName="Body_Type" />
+          <ScalarProperty Name="Kilometres_travelled" ColumnName="Kilometres_travelled" />
+          <ScalarProperty Name="Service_Kilometres" ColumnName="Service_Kilometres" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Car_Returns">
+      <EntityTypeMapping TypeName="ST10079848LesediModel.Car_Returns">
+        <MappingFragment StoreEntitySet="Car_Returns">
+          <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+          <ScalarProperty Name="Inspector_Name" ColumnName="Inspector_Name" />
+          <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+          <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+          <ScalarProperty Name="Elapsed_Date" ColumnName="Elapsed_Date" />
+          <ScalarProperty Name="Fine" ColumnName="Fine" />
+          <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers">
+      <EntityTypeMapping TypeName="ST10079848LesediModel.Driver">
+        <MappingFragment StoreEntitySet="Driver">
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+          <ScalarProperty Name="Driver_Address" ColumnName="Driver_Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drivers1">
+      <EntityTypeMapping TypeName="ST10079848LesediModel.Driver1">
+        <MappingFragment StoreEntitySet="Drivers">
+          <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+          <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+          <ScalarProperty Name="Driver_Address" ColumnName="Driver_Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inspectors">
+      <EntityTypeMapping TypeName="ST10079848LesediModel.Inspector">
+        <MappingFragment StoreEntitySet="Inspectors">
+          <ScalarProperty Name="Inspector_no" ColumnName="Inspector_no" />
+          <ScalarProperty Name="IName" ColumnName="IName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rentals">
+      <EntityTypeMapping TypeName="ST10079848LesediModel.Rental">
+        <MappingFragment StoreEntitySet="Rental">
+          <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+          <ScalarProperty Name="IName" ColumnName="IName" />
+          <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+          <ScalarProperty Name="RentFee" ColumnName="RentFee" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+          <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

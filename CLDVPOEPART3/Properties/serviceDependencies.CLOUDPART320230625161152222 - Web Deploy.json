@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "mssql2": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/lesedi-st10079848/databases/ST10079848Lesedi",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:RideYouRentCon"
+    }
+  }
+}

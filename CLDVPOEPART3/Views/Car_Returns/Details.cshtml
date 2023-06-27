@@ -1,0 +1,66 @@
+﻿@model CLDVPOEPART3.Models.Car_Returns
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Car_Returns</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Inspector_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inspector_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.End_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.End_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Elapsed_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Elapsed_Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Car.Car_Make)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Car.Car_Make)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RentalID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

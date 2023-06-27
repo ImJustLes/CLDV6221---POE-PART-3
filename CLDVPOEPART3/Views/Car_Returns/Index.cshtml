@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CLDVPOEPART3.Models.Car_Returns>
+
+@{
+    ViewBag.Title = "Car returns";
+}
+
+<h2>RETURNALS</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Inspector_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Driver_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.End_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Elapsed_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Car.Car_Make)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inspector_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Driver_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.End_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Elapsed_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Car.Car_Make)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RentalID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RentalID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RentalID })
+        </td>
+    </tr>
+}
+
+</table>

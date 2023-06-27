@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ST10079848LesediModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarNo" />
+          </Key>
+          <Property Name="CarNo" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Car_Make" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Body_Type" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Kilometres_travelled" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Service_Kilometres" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Available" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Car_Returns">
+          <Key>
+            <PropertyRef Name="RentalID" />
+          </Key>
+          <Property Name="CarNo" Type="varchar" MaxLength="6" />
+          <Property Name="Inspector_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Driver_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="End_Date" Type="date" Nullable="false" />
+          <Property Name="Elapsed_Date" Type="int" Nullable="false" />
+          <Property Name="Fine" Type="int" Nullable="false" />
+          <Property Name="RentalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ST10079848Lesedi.dbo.CarBodyType' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CarBodyType">
+          <Property Name="Body_Type" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'ST10079848Lesedi.dbo.CarMake' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CarMake">
+          <Property Name="Car_Make" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="int" Nullable="false" />
+          <Property Name="Driver_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Driver_Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Mobile" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Drivers">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="int" Nullable="false" />
+          <Property Name="Driver_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Driver_Address" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Mobile" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inspectors">
+          <Key>
+            <PropertyRef Name="Inspector_no" />
+          </Key>
+          <Property Name="Inspector_no" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="IName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Mobile" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="RentalID" />
+          </Key>
+          <Property Name="CarNo" Type="varchar" MaxLength="6" />
+          <Property Name="IName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Driver_Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RentFee" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="End_Date" Type="date" Nullable="false" />
+          <Property Name="RentalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Car_Retur__CarNo__6FE99F9F">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Car_Returns" Type="Self.Car_Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarNo" />
+            </Principal>
+            <Dependent Role="Car_Returns">
+              <PropertyRef Name="CarNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rental__CarNo__6477ECF3">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarNo" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="CarNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ST10079848LesediModel1StoreContainer">
+          <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Car_Returns" EntityType="Self.Car_Returns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drivers" EntityType="Self.Drivers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inspectors" EntityType="Self.Inspectors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rental" EntityType="Self.Rental" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Car_Retur__CarNo__6FE99F9F" Association="Self.FK__Car_Retur__CarNo__6FE99F9F">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Car_Returns" EntitySet="Car_Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rental__CarNo__6477ECF3" Association="Self.FK__Rental__CarNo__6477ECF3">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ST10079848LesediModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarNo" />
+          </Key>
+          <Property Name="CarNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Car_Make" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Body_Type" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kilometres_travelled" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Service_Kilometres" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Available" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Car_Returns" Relationship="Self.FK__Car_Retur__CarNo__6FE99F9F" FromRole="Car" ToRole="Car_Returns" />
+          <NavigationProperty Name="Rentals" Relationship="Self.FK__Rental__CarNo__6477ECF3" FromRole="Car" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="Car_Returns">
+          <Key>
+            <PropertyRef Name="RentalID" />
+          </Key>
+          <Property Name="CarNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Inspector_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Driver_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="End_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Elapsed_Date" Type="Int32" Nullable="false" />
+          <Property Name="Fine" Type="Int32" Nullable="false" />
+          <Property Name="RentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Car" Relationship="Self.FK__Car_Retur__CarNo__6FE99F9F" FromRole="Car_Returns" ToRole="Car" />
+        </EntityType>
+        <EntityType Name="Driver">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="Int32" Nullable="false" />
+          <Property Name="Driver_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Driver_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Driver1">
+          <Key>
+            <PropertyRef Name="DriverID" />
+          </Key>
+          <Property Name="DriverID" Type="Int32" Nullable="false" />
+          <Property Name="Driver_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Driver_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inspector">
+          <Key>
+            <PropertyRef Name="Inspector_no" />
+          </Key>
+          <Property Name="Inspector_no" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="RentalID" />
+          </Key>
+          <Property Name="CarNo" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="IName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Driver_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RentFee" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="End_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="RentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Car" Relationship="Self.FK__Rental__CarNo__6477ECF3" FromRole="Rental" ToRole="Car" />
+        </EntityType>
+        <Association Name="FK__Car_Retur__CarNo__6FE99F9F">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Car_Returns" Type="Self.Car_Returns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarNo" />
+            </Principal>
+            <Dependent Role="Car_Returns">
+              <PropertyRef Name="CarNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Rental__CarNo__6477ECF3">
+          <End Role="Car" Type="Self.Car" Multiplicity="0..1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarNo" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="CarNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ST10079848LesediEntities2000" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cars" EntityType="Self.Car" />
+          <EntitySet Name="Car_Returns" EntityType="Self.Car_Returns" />
+          <EntitySet Name="Drivers" EntityType="Self.Driver" />
+          <EntitySet Name="Drivers1" EntityType="Self.Driver1" />
+          <EntitySet Name="Inspectors" EntityType="Self.Inspector" />
+          <EntitySet Name="Rentals" EntityType="Self.Rental" />
+          <AssociationSet Name="FK__Car_Retur__CarNo__6FE99F9F" Association="Self.FK__Car_Retur__CarNo__6FE99F9F">
+            <End Role="Car" EntitySet="Cars" />
+            <End Role="Car_Returns" EntitySet="Car_Returns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Rental__CarNo__6477ECF3" Association="Self.FK__Rental__CarNo__6477ECF3">
+            <End Role="Car" EntitySet="Cars" />
+            <End Role="Rental" EntitySet="Rentals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ST10079848LesediModel1StoreContainer" CdmEntityContainer="ST10079848LesediEntities2000">
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="ST10079848LesediModel1.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="Car_Make" ColumnName="Car_Make" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Body_Type" ColumnName="Body_Type" />
+                <ScalarProperty Name="Kilometres_travelled" ColumnName="Kilometres_travelled" />
+                <ScalarProperty Name="Service_Kilometres" ColumnName="Service_Kilometres" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Car_Returns">
+            <EntityTypeMapping TypeName="ST10079848LesediModel1.Car_Returns">
+              <MappingFragment StoreEntitySet="Car_Returns">
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="Inspector_Name" ColumnName="Inspector_Name" />
+                <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="Elapsed_Date" ColumnName="Elapsed_Date" />
+                <ScalarProperty Name="Fine" ColumnName="Fine" />
+                <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drivers">
+            <EntityTypeMapping TypeName="ST10079848LesediModel1.Driver">
+              <MappingFragment StoreEntitySet="Driver">
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+                <ScalarProperty Name="Driver_Address" ColumnName="Driver_Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drivers1">
+            <EntityTypeMapping TypeName="ST10079848LesediModel1.Driver1">
+              <MappingFragment StoreEntitySet="Drivers">
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+                <ScalarProperty Name="Driver_Address" ColumnName="Driver_Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inspectors">
+            <EntityTypeMapping TypeName="ST10079848LesediModel1.Inspector">
+              <MappingFragment StoreEntitySet="Inspectors">
+                <ScalarProperty Name="Inspector_no" ColumnName="Inspector_no" />
+                <ScalarProperty Name="IName" ColumnName="IName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rentals">
+            <EntityTypeMapping TypeName="ST10079848LesediModel1.Rental">
+              <MappingFragment StoreEntitySet="Rental">
+                <ScalarProperty Name="CarNo" ColumnName="CarNo" />
+                <ScalarProperty Name="IName" ColumnName="IName" />
+                <ScalarProperty Name="Driver_Name" ColumnName="Driver_Name" />
+                <ScalarProperty Name="RentFee" ColumnName="RentFee" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="End_Date" ColumnName="End_Date" />
+                <ScalarProperty Name="RentalID" ColumnName="RentalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

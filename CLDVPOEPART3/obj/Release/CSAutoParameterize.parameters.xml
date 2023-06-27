@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-CLDVPOEPART3-20230627103932.mdf;Initial Catalog=aspnet-CLDVPOEPART3-20230627103932;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\lab_services_student\\source\\repos\\CLDVPOEPART3\\CLDVPOEPART3\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="ST10079848LesediEntities200-Web.config Connection String" description="ST10079848LesediEntities200 Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.RideYouRentModels20.csdl|res://*/Models.RideYouRentModels20.ssdl|res://*/Models.RideYouRentModels20.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=lesedi-st10079848.database.windows.net;initial catalog=ST10079848Lesedi;persist security info=True;user id=LesediMaela;password=Loansome49;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\lab_services_student\\source\\repos\\CLDVPOEPART3\\CLDVPOEPART3\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ST10079848LesediEntities200']/@connectionString" />
+  </parameter>
+  <parameter name="ST10079848LesediEntities2000-Web.config Connection String" description="ST10079848LesediEntities2000 Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.RYRModel.csdl|res://*/Models.RYRModel.ssdl|res://*/Models.RYRModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=lesedi-st10079848.database.windows.net;initial catalog=ST10079848Lesedi;persist security info=True;user id=LesediMaela;password=Loansome49;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\lab_services_student\\source\\repos\\CLDVPOEPART3\\CLDVPOEPART3\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ST10079848LesediEntities2000']/@connectionString" />
+  </parameter>
+</parameters>
